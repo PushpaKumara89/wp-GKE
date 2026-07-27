@@ -13,19 +13,20 @@ spec:
       labels:
         app: mariadb
     spec:
-      initContainers:
-      - name: fix-permissions
-        image: busybox
-        command: ["sh", "-c", "chown -R 999:999 /var/lib/mysql"]
-        securityContext:
-          runAsUser: 0
-          privileged: true
-        volumeMounts:
-        - name: maria-data
-          mountPath: /var/lib/mysql
+      # initContainers:
+      # - name: fix-permissions
+      #   image: busybox
+      #   command: ["sh", "-c", "chown -R 999:999 /var/lib/mysql"]
+      #   securityContext:
+      #     runAsUser: 0
+      #     privileged: true
+      #   volumeMounts:
+      #   - name: maria-data
+      #     mountPath: /var/lib/mysql
           
-      securityContext:      
+      securityContext:  
         runAsUser: 999
+        runAsGroup: 999
         fsGroup: 999
       containers:
       - name: mariadb
