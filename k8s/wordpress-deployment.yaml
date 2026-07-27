@@ -33,7 +33,10 @@ spec:
         resources:
           limits:
             memory: "256Mi" 
-            cpu: "500m"
+            cpu: "512m"
+          requests:
+            memory: "256Mi" 
+            cpu: "100m"
         envFrom:
           - configMapRef:
               name: wp-extra-config
@@ -68,6 +71,13 @@ spec:
       # 2. NEW: Nginx Sidecar Proxy Container (Port 80)
       - name: nginx-proxy
         image: nginx:alpine
+        resources:
+          limits:
+            memory: "256Mi" 
+            cpu: "150m"
+          requests:
+            memory: "128Mi" 
+            cpu: "50m"
         ports:
         - containerPort: 80
         volumeMounts:
