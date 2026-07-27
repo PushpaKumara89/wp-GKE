@@ -30,7 +30,6 @@ spec:
       # 1. WordPress FPM Container (Port 9000)
       - name: word-press
         image: pushpakumara/wordpress-pk-e:latest
-        imagePullPolicy: Never
         resources:
           limits:
             memory: "256Mi" 
