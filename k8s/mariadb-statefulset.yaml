@@ -55,6 +55,20 @@ spec:
         volumeMounts:
         - name: maria-data
           mountPath: /var/lib/mysql
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+              - matchExpressions:
+                  - key: topology.kubernetes.io/zone
+                    operator: In
+                    values:
+                      - europe-west4-a
+                      - europe-west4-b
+                      - europe-west4-c
+                      - europe-west1-b
+                      - europe-west1-c
+                      - europe-west1-d
   volumeClaimTemplates:
   - metadata:
       name: maria-data
