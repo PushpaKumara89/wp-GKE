@@ -38,7 +38,7 @@ spec:
           limits:
             cpu: "300m"
             memory: "512Mi"
-        command: ["mysqld"]
+        # command: ["mysqld"]
         args:
           - "--innodb-buffer-pool-size=512M"
           - "--innodb-flush-log-at-trx-commit=2"
